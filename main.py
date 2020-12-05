@@ -9,6 +9,10 @@ from fastapi import FastAPI, HTTPException
 
 api = FastAPI()
 
+@api.get("/")
+async def root():
+    return {"message" : "Hola mundo desde Heroku"}
+
 @api.post("/user/auth/")
 async def auth_user(user_in: UserIn):
 

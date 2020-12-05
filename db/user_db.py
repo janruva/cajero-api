@@ -16,6 +16,9 @@ database_users = {
     "andres18": UserInDB(**{"username":"andres18",
                             "password":"hola",
                             "balance":34000}),
+    "janruva": UserInDB(**{"username":"janruva",
+                            "password":"janruva91",
+                            "balance":34000}),
 }
 
 def get_user(username: str):

@@ -11,14 +11,14 @@ database_users = Dict[str, UserInDB]
 database_users = {
     "camilo24": UserInDB(**{"username":"camilo24",
                             "password":"root",
-                            "balance":12000}),
+                            "balance":50000}),
 
     "andres18": UserInDB(**{"username":"andres18",
                             "password":"hola",
                             "balance":34000}),
     "janruva": UserInDB(**{"username":"janruva",
                             "password":"janruva91",
-                            "balance":34000}),
+                            "balance":542000}),
 }
 
 def get_user(username: str):

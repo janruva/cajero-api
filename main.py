@@ -1,7 +1,7 @@
 from db.user_db import UserInDB
 from db.user_db import update_user, get_user
 from db.transaction_db import TransactionInDB
-from db.transaction_db import save_transaction
+from db.transaction_db import save_transaction, get_transactions
 from models.user_models import UserIn, UserOut
 from models.transaction_models import TransactionIn, TransactionOut
 import datetime
@@ -36,6 +36,15 @@ async def auth_user(user_in: UserIn):
 
     return  {"Autenticado": True}
 
+@api.get("/user/transactions/{username}")
+async def list_transactions(username: str):
+    transactions_in_db = get_transactions(username) #obtiene las transacciones de un usuario
+    transactions_out = []   #se crea una lista vacia 
+    for t in transactions_in_db:        #por cada elemento de transaction_out las agrega a la lista
+        t_out = TransactionOut(**t.dict())
+        transactions_out.append(t_out)
+
+    return transactions_out
 
 @api.get("/user/balance/{username}")
 async def get_balance(username: str):
@@ -70,3 +79,4 @@ async def make_transaction(transaction_in: TransactionIn):
     transaction_out = TransactionOut(**transaction_in_db.dict())
 
     return  transaction_out
+
